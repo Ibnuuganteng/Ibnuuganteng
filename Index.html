@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hd uploaders</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Upload dan Download Video di Sini</h1>
+    </header>
+    <main>
+        <div class="controls">
+            <button id="playPauseToggle">Play/Pause</button>
+            <button id="fullscreenToggle">Fullscreen</button>
+            <button id="downloadButton">Download Video</button>
+        </div>
+        <div class="time-display">
+            <span id="currentTime">00:00</span> / <span id="totalDuration">00:00</span>
+        </div>
+        <input type="file" id="fileInput" accept="video/*" onchange="loadVideo(event)">
+        <video id="videoPlayer" controls>
+            <source src="path/to/video_1080p.mp4" type="video/mp4" data-title="Video Pertama">
+            Browser Anda tidak mendukung video.
+        </video>
+        
+        <label for="volumeControl">Volume:</label>
+        <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1" onchange="setVolume(this.value)">
+        
+        <label for="speedControl">Kecepatan:</label>
+        <select id="speedControl" onchange="setPlaybackSpeed(this.value)">
+            <option value="0.5">0.5x</option>
+            <option value="1" selected>1x</option>
+            <option value="1.5">1.5x</option>
+            <option value="2">2x</option>
+        </select>
+
+        <label for="resolutionControl">Resolusi Video:</label>
+        <select id="resolutionControl" onchange="setResolution(this.value)">
+            <option value="720p">720p</option>
+            <option value="1080p" selected>1080p</option>
+            <option value="4k">4K</option>
+        </select>
+
+        <h2>Playlist</h2>
+        <input type="text" id="searchInput" placeholder="Cari di Playlist..." oninput="filterPlaylist()">
+        <div id="playlist" class="playlist"></div>
+        <button onclick="addToPlaylist()">Tambahkan ke Playlist</button>
+
+        <div class="comments-section">
+            <h2>Komentar</h2>
+            <textarea id="commentInput" placeholder="Tulis komentar..."></textarea>
+            <button onclick="postComment()">Kirim</button>
+            <div id="commentsList"></div>
+        </div>
+
+        <button id="shareButton" style="margin-top: 10px;">Bagikan Video</button>
+        <button id="themeToggle" style="margin-top: 10px;">Ganti Tema</button>
+    </main>
+    <footer style="text-align: center; margin-top: 20px;">
+        <p>Hak Cipta dullz © 2024</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
